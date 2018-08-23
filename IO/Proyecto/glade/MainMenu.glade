@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.1 -->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <object class="GtkImage" id="btnExitImage">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/btnExit.png</property>
+  </object>
+  <object class="GtkImage" id="btnPending">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/btnPending.png</property>
+  </object>
+  <object class="GtkImage" id="btnPending2">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/btnPending.png</property>
+  </object>
+  <object class="GtkImage" id="btnPending3">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/btnPending.png</property>
+  </object>
+  <object class="GtkImage" id="btnPending4">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/btnPending.png</property>
+  </object>
+  <object class="GtkImage" id="btnRuta">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/buttonRuta.png</property>
+  </object>
+  <object class="GtkWindow" id="mainMenu">
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Main Menu</property>
+    <property name="resizable">False</property>
+    <property name="window_position">center-always</property>
+    <property name="gravity">center</property>
+    <signal name="destroy" handler="on_main_destroy" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkGrid">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="row_homogeneous">True</property>
+        <property name="column_homogeneous">True</property>
+        <child>
+          <object class="GtkButton" id="btnFloyd">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Algoritmo de la ruta mas corta de un nodo hacia los dem[as</property>
+            <property name="margin_left">10</property>
+            <property name="margin_right">10</property>
+            <property name="margin_top">10</property>
+            <property name="margin_bottom">10</property>
+            <property name="image">btnRuta</property>
+            <property name="image_position">top</property>
+            <property name="always_show_image">True</property>
+            <signal name="clicked" handler="floydAction" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="tooltip_markup" translatable="yes">Sin definir</property>
+            <property name="margin_left">10</property>
+            <property name="margin_right">10</property>
+            <property name="margin_top">10</property>
+            <property name="margin_bottom">10</property>
+            <property name="image">btnPending</property>
+            <property name="use_underline">True</property>
+            <property name="image_position">top</property>
+            <property name="always_show_image">True</property>
+            <signal name="clicked" handler="pendingAction" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Sin definir</property>
+            <property name="margin_left">10</property>
+            <property name="margin_right">10</property>
+            <property name="margin_top">10</property>
+            <property name="margin_bottom">10</property>
+            <property name="image">btnPending2</property>
+            <signal name="clicked" handler="pendingAction" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Sin definir</property>
+            <property name="margin_left">10</property>
+            <property name="margin_right">10</property>
+            <property name="margin_top">10</property>
+            <property name="margin_bottom">10</property>
+            <property name="image">btnPending3</property>
+            <signal name="clicked" handler="pendingAction" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Sin definir</property>
+            <property name="margin_left">10</property>
+            <property name="margin_right">10</property>
+            <property name="margin_top">10</property>
+            <property name="margin_bottom">10</property>
+            <property name="image">btnPending4</property>
+            <signal name="clicked" handler="pendingAction" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="btnExit">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Salir del men[u principal</property>
+            <property name="margin_left">10</property>
+            <property name="margin_right">10</property>
+            <property name="margin_top">10</property>
+            <property name="margin_bottom">10</property>
+            <property name="image">btnExitImage</property>
+            <property name="image_position">top</property>
+            <signal name="clicked" handler="on_main_destroy" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

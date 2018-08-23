@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.1 -->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <object class="GtkImage" id="btnDeleteNodeImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/btnDelete.png</property>
+  </object>
+  <object class="GtkImage" id="btnDownloadImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/btnDownload.png</property>
+  </object>
+  <object class="GtkImage" id="btnEditNodeImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/btnEdit.png</property>
+  </object>
+  <object class="GtkImage" id="btnExitPending">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/btnExitMini.png</property>
+  </object>
+  <object class="GtkImage" id="btnLoadImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/btnLoad.png</property>
+  </object>
+  <object class="GtkImage" id="btnNewNodeImg">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">images/btnAdd.png</property>
+  </object>
+  <object class="GtkWindow" id="main">
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Pending</property>
+    <property name="resizable">False</property>
+    <property name="default_width">600</property>
+    <property name="default_height">370</property>
+    <signal name="destroy" handler="on_main_destroy" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkGrid">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin_left">15</property>
+            <property name="margin_right">15</property>
+            <property name="margin_top">10</property>
+            <property name="margin_bottom">10</property>
+            <child>
+              <object class="GtkGrid">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkGrid">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkButton" id="btnEditNode">
+                        <property name="width_request">100</property>
+                        <property name="height_request">80</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="tooltip_text" translatable="yes">Editar nodo</property>
+                        <property name="margin_left">10</property>
+                        <property name="margin_top">10</property>
+                        <property name="image">btnEditNodeImg</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="btnNewNode">
+                        <property name="width_request">100</property>
+                        <property name="height_request">80</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="tooltip_text" translatable="yes">Agregar nodo</property>
+                        <property name="margin_left">10</property>
+                        <property name="margin_top">10</property>
+                        <property name="image">btnNewNodeImg</property>
+                        <signal name="clicked" handler="on_newNode_click" object="newNodeName" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="btnDeleteNode">
+                        <property name="width_request">100</property>
+                        <property name="height_request">80</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="tooltip_text" translatable="yes">Eliminar nodo</property>
+                        <property name="margin_left">10</property>
+                        <property name="margin_top">10</property>
+                        <property name="image">btnDeleteNodeImg</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="btnExit">
+                        <property name="width_request">100</property>
+                        <property name="height_request">80</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="tooltip_text" translatable="yes">Salir del sistema</property>
+                        <property name="margin_top">10</property>
+                        <property name="image">btnExitPending</property>
+                        <signal name="clicked" handler="on_main_destroy" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="btnLoadFile">
+                        <property name="width_request">100</property>
+                        <property name="height_request">80</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="tooltip_text" translatable="yes">Cargar archivo </property>
+                        <property name="margin_top">10</property>
+                        <property name="image">btnLoadImg</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="btnDownload">
+                        <property name="width_request">100</property>
+                        <property name="height_request">80</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="tooltip_text" translatable="yes">Descargar archivo</property>
+                        <property name="margin_top">10</property>
+                        <property name="image">btnDownloadImg</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="newNodeName">
+                    <property name="width_request">0</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="margin_top">10</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Nombre del nodo</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
