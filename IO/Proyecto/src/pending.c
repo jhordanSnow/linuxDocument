@@ -5,7 +5,10 @@ int main(int argc, char *argv[])
 {
     /* Init GTK+ */
     gtk_init(&argc, &argv);
-    showWindow("Pending","main");
+    createBuilder("Pending");
+    gtk_builder_connect_signals(gtkBuilder, NULL);
+
+    showWindow(gtkBuilder,"main");
     /* Start main loop */
     gtk_main();
 

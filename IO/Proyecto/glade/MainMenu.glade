@@ -10,17 +10,19 @@
   <object class="GtkImage" id="btnPending">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">images/btnPending.png</property>
+    <property name="pixbuf">images/buttonKnapsack.png</property>
   </object>
   <object class="GtkImage" id="btnPending2">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">images/btnPending.png</property>
+    <property name="pixbuf">images/btnSportsSeries.png</property>
   </object>
   <object class="GtkImage" id="btnPending3">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="pixbuf">images/btnPending.png</property>
+    <property name="tooltip_text" translatable="yes">Algoritmo de programación dinámica que calcula el plan óptimo de reemplazo de un equipo determinado en un plazo de tiempo finito. Se ingresa el plazo del proyecto, la vida útil del equipo y opcionalmente las ganancias y el indice de inflación. El programa calcula los momentos en los que se debe reemplazar el equipo para minimizar los costos durante el plazo del proyecto. En caso de que haya varias soluciones óptimas, se presentan todas las alternativas. 
+</property>
+    <property name="pixbuf">images/btnReemplazo.png</property>
   </object>
   <object class="GtkImage" id="btnPending4">
     <property name="visible">True</property>
@@ -53,7 +55,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Algoritmo de la ruta mas corta de un nodo hacia los dem[as</property>
+            <property name="tooltip_markup" translatable="yes">Algoritmo de análisis sobre grafos para encontrar el camino mínimo en grafos dirigidos ponderados. El algoritmo encuentra el camino entre todos los pares de vértices en una única ejecución. </property>
             <property name="margin_left">10</property>
             <property name="margin_right">10</property>
             <property name="margin_top">10</property>
@@ -73,7 +75,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_markup" translatable="yes">Sin definir</property>
+            <property name="tooltip_markup" translatable="yes">Knapsack es un problema de optimización combinatoria, es decir, que busca la mejor solución entre un conjunto finito de posibles soluciones a un problema. Modela una situación análoga al llenar una mochila, incapaz de soportar más de un peso determinado, con todo o parte de un conjunto de objetos, cada uno con un peso y valor específicos. Los objetos colocados en la mochila deben maximizar el valor total sin exceder el peso máximo. Sus casos especiales incluyen 1/0 (la cantidad disponible de cada objeto es 1) y Unbounded (Cantidades ilimitadas de cada objeto).</property>
             <property name="margin_left">10</property>
             <property name="margin_right">10</property>
             <property name="margin_top">10</property>
@@ -82,7 +84,7 @@
             <property name="use_underline">True</property>
             <property name="image_position">top</property>
             <property name="always_show_image">True</property>
-            <signal name="clicked" handler="pendingAction" swapped="no"/>
+            <signal name="clicked" handler="knapsackAction" swapped="no"/>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -94,13 +96,13 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Sin definir</property>
+            <property name="tooltip_text" translatable="yes">Algoritmo de programación dinámica que calcula la probabilidad de un equipo de ganar una serie de partidos, dada una probabilidad de ganar en casa y una de visita, asumiendo que no hay empate. Cada celda representa un posible escenario, las filas son los partidos que le faltan al equipo A para ganar la serie mientras que las columnas los partidos que le faltan al equipo B para ganarla.</property>
             <property name="margin_left">10</property>
             <property name="margin_right">10</property>
             <property name="margin_top">10</property>
             <property name="margin_bottom">10</property>
             <property name="image">btnPending2</property>
-            <signal name="clicked" handler="pendingAction" swapped="no"/>
+            <signal name="clicked" handler="sportsSeriesAction" swapped="no"/>
           </object>
           <packing>
             <property name="left_attach">2</property>
@@ -118,7 +120,7 @@
             <property name="margin_top">10</property>
             <property name="margin_bottom">10</property>
             <property name="image">btnPending3</property>
-            <signal name="clicked" handler="pendingAction" swapped="no"/>
+            <signal name="clicked" handler="reemplazoDeEquiposAction" swapped="no"/>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -136,7 +138,7 @@
             <property name="margin_top">10</property>
             <property name="margin_bottom">10</property>
             <property name="image">btnPending4</property>
-            <signal name="clicked" handler="pendingAction" swapped="no"/>
+            <signal name="clicked" handler="BSTAction" swapped="no"/>
           </object>
           <packing>
             <property name="left_attach">1</property>
