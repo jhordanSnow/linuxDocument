@@ -7,15 +7,15 @@
 #define MAX_COLOR 255
 #define EPSILON 0.00005
 
-typedef enum { SPHERE } ObjectType;
+typedef enum { SPHERE, POLYGON, PLANE } ObjectType;
 
 typedef struct Vector{
   double X,Y,Z;
 }Vector;
 
 typedef struct Ray{
-    Vector Anchor;
-    Vector Direction;
+  Vector Anchor;
+  Vector Direction;
 }Ray;
 
 typedef struct Color{
@@ -36,9 +36,22 @@ typedef struct DistanceArray{
 typedef struct Sphere{
   Vector Center;
   double Radius;
-  DistanceArray (*GetIntersection)(struct Sphere*, struct Vector);
+  DistanceArray (*GetIntersection)(struct Sphere*, struct Ray*);
   Vector (*GetNormal)(struct Sphere*, struct Vector);
 }Sphere;
+
+typedef struct Plane{
+  double D;
+  Vector Normal;
+}Plane;
+
+typedef struct Polygon{
+  int VertexCount;
+  Vector* Vertices;
+  Plane* PolygonPlane;
+  DistanceArray (*GetIntersection)(struct Polygon*, struct Ray*);
+  Vector (*GetNormal)(struct Polygon*);
+}Polygon;
 
 typedef struct Node{
   struct Node* next;
@@ -47,6 +60,7 @@ typedef struct Node{
   Color color;
   ObjectType type;
   double DiffusionCoefficient;
+  double EspecularCoefficient;
   double AmbientCoefficient;
 }Node;
 
@@ -58,11 +72,17 @@ typedef struct Intersection{
 
 typedef struct Light{
   Vector Position;
+  int Kn;
   double Intensity;
   double AttenuationC1;
   double AttenuationC2;
   double AttenuationC3;
 }Light;
+
+typedef struct IntensityReturn{
+  double LightIntensity;
+  double EspecularReflexion;
+}IntensityReturn;
 
 /* ------- Diseñador ----------  */
 
@@ -78,6 +98,10 @@ Light* Lights;
 Color** FrameBuffer;
 double AmbientLight;
 
+int CantPlanes;
+Plane** Planes;
+
+
 /* Common functions */
 Vector CreateVector(double X, double Y, double Z);
 Color CreateColor(int Alpha, int Red, int Green, int Blue);
@@ -88,6 +112,10 @@ void AllocateFrameBuffer();
 int LowerDistanceIndex(DistanceArray objectTs, double minT);
 double PointProduct(Vector L, Vector N);
 void LoadScene(char* Filename);
+Vector CrossProduct(Vector v1, Vector v2);
+Vector ScalarVector(Vector v, double e);
+Vector SubVector(Vector v1, Vector v2);
+Vector SumVector(Vector v1, Vector v2);
 
 /* File functions */
 void FileToFrameBuffer(char* file);
@@ -96,11 +124,20 @@ void FrameBufferToFile(char* file);
 /* Main Functions */
 void InitializeDesignerVariables();
 void RayTracer();
-Color GetColor(Vector Direction);
-Intersection* GetFirstIntersection(Vector Direction);
-DistanceArray GetIntersections(Vector Direction, ObjectType type ,void* object);
-double GetLightIntensity(Vector Direction, Intersection* intersection);
+Color GetColor(Ray* Rayo);
+Intersection* GetFirstIntersection(Ray* Rayo);
+DistanceArray GetIntersections(Ray* Rayo, ObjectType type ,void* object);
+IntensityReturn* GetLightIntensity(Ray* Rayo, Intersection* intersection);
+
+void InitObjects(FILE* file, Node* Object);
+void InitSphere(FILE* file, Node* Object);
+void InitPlane(FILE* file);
+void InitPolygon(FILE* file, Node* Object);
+Plane* PlaneFromPoints(Vector v1, Vector v2, Vector v3);
 
 /* Objects Functions */
-DistanceArray SphereIntersection(Sphere* sphere, Vector Direction);
+DistanceArray SphereIntersection(Sphere* sphere, Ray* Rayo);
 Vector SphereNormal(Sphere* sphere, Vector Point);
+
+DistanceArray PolygonIntersection(Polygon* polygon, Ray* Rayo);
+Vector PolygonNormal(Polygon* polygon);

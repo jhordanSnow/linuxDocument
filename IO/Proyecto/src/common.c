@@ -41,3 +41,10 @@ void on_main_destroy(){
     g_object_unref(G_OBJECT(gtkBuilder));
     gtk_main_quit();
 }
+
+void showMessage(char* message, GtkWidget* CurrentWindow){
+  GtkWidget *messageDialog = gtk_message_dialog_new(GTK_WINDOW(CurrentWindow), GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_CLOSE, message);
+
+  gtk_dialog_run (GTK_DIALOG (messageDialog));
+  gtk_widget_destroy (messageDialog);
+}

@@ -46,7 +46,6 @@ char **names;
 int currentShow;
 
 void fillGrid(GtkGrid *grid, GtkGrid *gridP, app_widgets* appWdgets);
-void showMessage(char* message);
 void draw_callback (GtkWidget *widget, cairo_t *cr, app_widgets* appWdgets, int color);
 int getIdName(char* name);
 
@@ -115,7 +114,7 @@ void automatic_entry(GtkButton *button, app_widgets *appWdgets){
 
   FILE *f = fopen(filename, "r");
   if (f == NULL){
-    showMessage("Error al abrir el archivo");
+    showMessage("Error al abrir el archivo", currentWindow);
   }else{
     CANT_NODES = 20;
     nodePos = malloc(CANT_NODES * sizeof(float *));
@@ -152,7 +151,7 @@ void automatic_entry(GtkButton *button, app_widgets *appWdgets){
       }
     }
 
-    showMessage("Archivo cargado correctamente");
+    showMessage("Archivo cargado correctamente", currentWindow);
     fclose(f);
 
 
@@ -406,12 +405,6 @@ void nextTable(GtkButton *button, app_widgets *appWdgets){
   currentColor = (currentColor == 0 && tmpChanged == 1) ? 1 : 0;
 }
 
-void showMessage(char* message){
-  GtkWidget *messageDialog = gtk_message_dialog_new(GTK_WINDOW(currentWindow), GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_CLOSE, message);
-
-  gtk_dialog_run (GTK_DIALOG (messageDialog));
-  gtk_widget_destroy (messageDialog);
-}
 
 void downloadFile(GtkButton button, app_widgets *appWdgets){
   GtkFileChooserAction action = GTK_FILE_CHOOSER_ACTION_SAVE;
@@ -428,7 +421,7 @@ void downloadFile(GtkButton button, app_widgets *appWdgets){
 
     FILE *f = fopen(filename, "w");
     if (f == NULL){
-      showMessage("Error al abrir el archivo");
+      showMessage("Error al abrir el archivo", currentWindow);
     }else{
 
       for (int i = 0; i < CANT_NODES; i++) {
@@ -443,9 +436,9 @@ void downloadFile(GtkButton button, app_widgets *appWdgets){
       }
 
       if (success == 1){
-        showMessage("Archivo exportado correctamente");
+        showMessage("Archivo exportado correctamente", currentWindow);
       }else{
-        showMessage("Ocurrió un error al exportar el archivo");
+        showMessage("Ocurrió un error al exportar el archivo", currentWindow);
       }
 
       fclose(f);
@@ -658,7 +651,7 @@ void changeName(GtkButton *button, app_widgets *appWdgets){
       addTooltips(GTK_GRID(appWdgets->grid), GTK_GRID(appWdgets->gridP));
     }
   }else{
-    showMessage("El nombre no puede estar vacío.");
+    showMessage("El nombre no puede estar vacío.", currentWindow);
   }
 
   gtk_widget_show_all(currentWindow);

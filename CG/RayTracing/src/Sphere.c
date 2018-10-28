@@ -1,18 +1,18 @@
 #include "headers/main.h"
 
-DistanceArray SphereIntersection(Sphere* sphere, Vector Direction){
+DistanceArray SphereIntersection(Sphere* sphere, Ray* Rayo){
   DistanceArray objectTs;
   double a,b,c;
 
   a = 1.0;
   b = 2*(
-          (Direction.X * (Eye.X - sphere->Center.X)) +
-          (Direction.Y * (Eye.Y - sphere->Center.Y)) +
-          (Direction.Z * (Eye.Z - sphere->Center.Z))
+          (Rayo->Direction.X * (Rayo->Anchor.X - sphere->Center.X)) +
+          (Rayo->Direction.Y * (Rayo->Anchor.Y - sphere->Center.Y)) +
+          (Rayo->Direction.Z * (Rayo->Anchor.Z - sphere->Center.Z))
         );
-  c = (Eye.X - sphere->Center.X)*(Eye.X - sphere->Center.X) +
-      (Eye.Y - sphere->Center.Y)*(Eye.Y - sphere->Center.Y) +
-      (Eye.Z - sphere->Center.Z)*(Eye.Z - sphere->Center.Z) -
+  c = (Rayo->Anchor.X - sphere->Center.X)*(Rayo->Anchor.X - sphere->Center.X) +
+      (Rayo->Anchor.Y - sphere->Center.Y)*(Rayo->Anchor.Y - sphere->Center.Y) +
+      (Rayo->Anchor.Z - sphere->Center.Z)*(Rayo->Anchor.Z - sphere->Center.Z) -
       (sphere->Radius * sphere->Radius);
 
   objectTs = Solve2GradeEquation(a, b, c);

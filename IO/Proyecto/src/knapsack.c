@@ -45,7 +45,6 @@ double *solution;
 
 void setVisibility(app_widgets* appWdgets, int visible);
 int checkEntries(app_widgets* appWdgets);
-void showMessage(char* message);
 void setWidgetMargin(GtkWidget* widget);
 void deleteRow(GtkWidget* button, app_widgets* appWdgets);
 void executeKnapsack(app_widgets* appWdgets);
@@ -189,17 +188,10 @@ void setWidgetMargin(GtkWidget* widget){
 int checkEntries(app_widgets* appWdgets){
   const char* name =  gtk_entry_get_text(GTK_ENTRY(appWdgets->name));
   if (strcmp(name, "") == 0){
-    showMessage("El nombre no puede ser vacío");
+    showMessage("El nombre no puede ser vacío", currentWindow);
     return 0;
   }
   return 1;
-}
-
-void showMessage(char* message){
-  GtkWidget *messageDialog = gtk_message_dialog_new(GTK_WINDOW(currentWindow), GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_CLOSE, message);
-
-  gtk_dialog_run (GTK_DIALOG (messageDialog));
-  gtk_widget_destroy (messageDialog);
 }
 
 
@@ -445,7 +437,7 @@ void downloadFile(GtkButton* button, app_widgets *appWdgets){
 
     FILE *f = fopen(filename, "w");
     if (f == NULL){
-      showMessage("Error al abrir el archivo");
+      showMessage("Error al abrir el archivo", currentWindow);
     }else{
 
       if (success == 1){
@@ -498,9 +490,9 @@ void downloadFile(GtkButton* button, app_widgets *appWdgets){
       }
 
       if (success == 1){
-        showMessage("Archivo exportado correctamente");
+        showMessage("Archivo exportado correctamente", currentWindow);
       }else{
-        showMessage("Ocurrió un error al exportar el archivo");
+        showMessage("Ocurrió un error al exportar el archivo", currentWindow);
       }
 
       fclose(f);
@@ -530,7 +522,7 @@ void uploadFile(GtkButton* button, app_widgets *appWdgets){
 
     FILE *f = fopen(filename, "r");
     if (f == NULL){
-      showMessage("Error al abrir el archivo");
+      showMessage("Error al abrir el archivo", currentWindow);
     }else{
       knap = malloc(currentRow * sizeof(knapItem));
       char fileContent[100];
@@ -585,7 +577,7 @@ void uploadFile(GtkButton* button, app_widgets *appWdgets){
         col++;
       }
 
-      showMessage("Archivo cargado correctamente");
+      showMessage("Archivo cargado correctamente", currentWindow);
       fclose(f);
     }
   }

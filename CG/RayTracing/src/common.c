@@ -21,6 +21,17 @@ Vector CreateVector(double X, double Y, double Z){
   return v;
 }
 
+Vector ScalarVector(Vector v, double e){
+  return CreateVector(e * v.X, e * v.Y, e * v.Z);
+}
+
+Vector SumVector(Vector v1, Vector v2){
+  return CreateVector(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
+}
+
+Vector SubVector(Vector v1, Vector v2){
+  return CreateVector(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
+}
 
 void AllocateFrameBuffer(){
   FrameBuffer = calloc(H_SIZE, sizeof(Color *));
@@ -53,7 +64,7 @@ Vector NormalizeVector(Vector vector){
 int LowerDistanceIndex(DistanceArray objectTs, double minT){
   int lowerIndex = -1;
   for (int i = 0; i < objectTs.size; i++) {
-    if (objectTs.content[i] >= 0 && objectTs.content[i] <= minT){
+    if (objectTs.content[i] >= EPSILON && objectTs.content[i] <= minT){
       minT = objectTs.content[i];
       lowerIndex = i;
     }
@@ -87,4 +98,12 @@ double PointProduct(Vector Vector1, Vector Vector2){
   double cosAngle;
   cosAngle = (Vector1.X * Vector2.X) + (Vector1.Y * Vector2.Y) + (Vector1.Z * Vector2.Z);
   return cosAngle;
+}
+
+Vector CrossProduct(Vector v1, Vector v2){
+  return CreateVector(
+    v1.Y*v2.Z - v1.Z*v2.Y,
+    v1.Z*v2.X - v1.X*v2.Z,
+    v1.X*v2.Y - v1.Y*v2.X
+  );
 }
